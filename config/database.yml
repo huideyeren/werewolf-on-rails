@@ -13,20 +13,20 @@ default: &default
   adapter: mysql2
   encoding: utf8
   pool: 5
-  username: root
-  password:
+  username: <%= ENV['RAILS_DATABASE_USER'] %>
+  password: <%= ENV['RAILS_DATABASE_PASS'] %>
   socket: /var/run/mysqld/mysqld.sock
 
 development:
   <<: *default
-  database: wereworf-on-rails_development
+  database: wereworf_on_rails_development
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: wereworf-on-rails_test
+  database: wereworf_on_rails_test
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -49,6 +49,6 @@ test:
 #
 production:
   <<: *default
-  database: wereworf-on-rails_production
-  username: wereworf-on-rails
+  database: wereworf_on_rails_production
+  username: wereworf_on_rails
   password: <%= ENV['WEREWORF-ON-RAILS_DATABASE_PASSWORD'] %>
